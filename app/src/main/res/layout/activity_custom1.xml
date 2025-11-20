@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="#F5F5F5"
+    android:layout_marginBottom="2dp">
+
+    <TextView
+        android:id="@+id/coldoctorid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="ID"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:background="#E0E0E0"
+        android:padding="4dp"/>
+
+    <TextView
+        android:id="@+id/colname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Name"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+    <TextView
+        android:id="@+id/coldepartment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Department"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+    <TextView
+        android:id="@+id/colemail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Email"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+    <TextView
+        android:id="@+id/colusername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Username"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+</LinearLayout>

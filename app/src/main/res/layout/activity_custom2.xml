@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="#F5F5F5"
+    android:layout_marginBottom="2dp">
+
+
+
+    <TextView
+        android:id="@+id/colname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Name"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+    <TextView
+        android:id="@+id/colcourse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Course"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+    <TextView
+        android:id="@+id/colattendance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Attend"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+    <TextView
+        android:id="@+id/colmidterm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Mid"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+    <TextView
+        android:id="@+id/colfinal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Final"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+    <TextView
+        android:id="@+id/coltotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Total"
+        android:textColor="#000000"
+        android:padding="4dp"
+        android:layout_marginLeft="2dp"/>
+
+
+
+</LinearLayout>

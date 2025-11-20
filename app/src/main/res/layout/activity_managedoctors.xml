@@ -1,0 +1,148 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!-- Header Row -->
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip">
+
+        <TextView
+            android:id="@+id/txtmanagedoctors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Manage Doctors : "
+            android:layout_span="1"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </TableRow>
+
+    <!-- Divider Line -->
+    <View
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+
+    <!-- Search Row -->
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip">
+
+        <SearchView
+            android:id="@+id/searchdoctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Search by name or username" />
+
+    </TableRow>
+
+    <!-- Divider Line -->
+    <View
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+
+    <!-- Header Row for Column Labels -->
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="#DDDDDD"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ID"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:padding="4dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Name"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Department"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Email"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Username"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:padding="4dp"
+            android:layout_marginLeft="2dp"/>
+
+    </LinearLayout>
+
+    <!-- Divider Line -->
+    <View
+        android:layout_height="2dip"
+        android:background="#000000" />
+
+    <!-- ListView Section -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1">
+
+        <ListView
+            android:id="@+id/lstdoctors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+    </LinearLayout>
+
+    <!-- Divider Line -->
+    <View
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+
+    <!-- Button Row -->
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip">
+
+        <Button
+            android:id="@+id/btncancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</TableLayout>

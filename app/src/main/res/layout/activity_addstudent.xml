@@ -1,0 +1,176 @@
+<AbsoluteLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txtaddstudent"
+        android:layout_width="112dp"
+        android:layout_height="33dp"
+        android:layout_x="158dp"
+        android:layout_y="62dp"
+        android:text="Add Student" />
+
+    <TextView
+        android:id="@+id/txtstudentid"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="120dp"
+        android:text="Student Id:" />
+
+    <TextView
+        android:id="@+id/txtstudentname"
+        android:layout_width="106dp"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="164dp"
+        android:text="Student Name:" />
+
+    <EditText
+        android:id="@+id/edtstudentid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="139dp"
+        android:layout_y="105dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/edtstudentname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="141dp"
+        android:layout_y="147dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txtcourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="31dp"
+        android:layout_y="226dp"
+        android:text="Course:" />
+
+    <TextView
+        android:id="@+id/txtsemester"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_x="34dp"
+        android:layout_y="274dp"
+        android:text="Semester:" />
+
+    <Spinner
+        android:id="@+id/spinnercourse"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_x="144dp"
+        android:layout_y="216dp" />
+
+    <Spinner
+        android:id="@+id/spinnersemester"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_x="144dp"
+        android:layout_y="266dp" />
+
+    <TextView
+        android:id="@+id/txtattendance"
+        android:layout_width="92dp"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="332dp"
+        android:text="Attendance:" />
+
+    <TextView
+        android:id="@+id/txtmidterm"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_x="28dp"
+        android:layout_y="382dp"
+        android:text="Midterm:" />
+
+    <TextView
+        android:id="@+id/txtfinal"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:layout_x="34dp"
+        android:layout_y="428dp"
+        android:text="Final:" />
+
+    <EditText
+        android:id="@+id/edtattendance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="143dp"
+        android:layout_y="311dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/edtmidterm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="145dp"
+        android:layout_y="353dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <EditText
+        android:id="@+id/edtfinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="147dp"
+        android:layout_y="401dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txttotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="33dp"
+        android:layout_y="480dp"
+        android:text="Total:" />
+
+    <TextView
+        android:id="@+id/txtgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="35dp"
+        android:layout_y="520dp"
+        android:text="Grade:" />
+
+    <TextView
+        android:id="@+id/txttotalvalue"
+        android:layout_width="208dp"
+        android:layout_height="wrap_content"
+        android:layout_x="148dp"
+        android:layout_y="476dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txtgradevalue"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_x="148dp"
+        android:layout_y="518dp"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnaddstudent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="162dp"
+        android:layout_y="552dp"
+        android:text="Add Student" />
+
+
+</AbsoluteLayout>

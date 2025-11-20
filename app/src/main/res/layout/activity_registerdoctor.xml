@@ -1,0 +1,110 @@
+<AbsoluteLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txtRegisterDoctor"
+        android:layout_width="171dp"
+        android:layout_height="31dp"
+        android:layout_x="124dp"
+        android:layout_y="81dp"
+        android:text="Register New Doctor" />
+
+    <TextView
+        android:id="@+id/txtname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="67dp"
+        android:layout_y="147dp"
+        android:text="Doctor Name:" />
+
+    <EditText
+        android:id="@+id/edtname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="161dp"
+        android:layout_y="125dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txtemail"
+        android:layout_width="86dp"
+        android:layout_height="30dp"
+        android:layout_x="69dp"
+        android:layout_y="188dp"
+        android:text="Email:" />
+
+    <EditText
+        android:id="@+id/edtemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="163dp"
+        android:layout_y="169dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txtusername"
+        android:layout_width="79dp"
+        android:layout_height="29dp"
+        android:layout_x="70dp"
+        android:layout_y="233dp"
+        android:text="Username:" />
+
+    <EditText
+        android:id="@+id/edtusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="165dp"
+        android:layout_y="224dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/txtpassword"
+        android:layout_width="77dp"
+        android:layout_height="35dp"
+        android:layout_x="72dp"
+        android:layout_y="298dp"
+        android:text="Password:" />
+
+    <EditText
+        android:id="@+id/edtpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="162dp"
+        android:layout_y="284dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <Spinner
+        android:id="@+id/spinnerdep"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_x="177dp"
+        android:layout_y="374dp" />
+
+    <TextView
+        android:id="@+id/txtdepartment"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_x="73dp"
+        android:layout_y="375dp"
+        android:text="Department:" />
+
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="162dp"
+        android:layout_y="465dp"
+        android:text="Register" />
+
+</AbsoluteLayout>

@@ -1,0 +1,81 @@
+<AbsoluteLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txtwelcomemsg1"
+        android:layout_width="161dp"
+        android:layout_height="37dp"
+        android:layout_x="136dp"
+        android:layout_y="111dp"
+        android:text="Welcome To UniGrade" />
+
+    <TextView
+        android:id="@+id/txtusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="84dp"
+        android:layout_y="256dp"
+        android:text="Username:" />
+
+    <TextView
+        android:id="@+id/txtpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="82dp"
+        android:layout_y="322dp"
+        android:text="Password:" />
+
+    <EditText
+        android:id="@+id/edttextusername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="165dp"
+        android:layout_y="229dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="180dp"
+        android:layout_y="473dp"
+        android:text="Login" />
+
+    <TextView
+        android:id="@+id/txtwelcomemsg2"
+        android:layout_width="75dp"
+        android:layout_height="37dp"
+        android:layout_x="176dp"
+        android:layout_y="140dp"
+        android:text="Manager" />
+
+    <Spinner
+        android:id="@+id/spinneruserrole"
+        android:layout_width="209dp"
+        android:layout_height="44dp"
+        android:layout_x="166dp"
+        android:layout_y="375dp" />
+
+    <TextView
+        android:id="@+id/txtuserrole"
+        android:layout_width="73dp"
+        android:layout_height="35dp"
+        android:layout_x="86dp"
+        android:layout_y="386dp"
+        android:text="Role:" />
+
+    <EditText
+        android:id="@+id/edttextpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="172dp"
+        android:layout_y="300dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+</AbsoluteLayout>
