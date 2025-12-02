@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniGradeManagerProject">
         <activity
+            android:name=".updatestudent"
+            android:exported="false" />
+        <activity
             android:name=".mystudents"
             android:exported="false" />
         <activity

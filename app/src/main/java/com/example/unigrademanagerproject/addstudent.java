@@ -1,5 +1,7 @@
 package com.example.unigrademanagerproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,47 +10,44 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class addstudent extends AppCompatActivity {
-    Button btn;
+    Button btn,btnBackToLogin;
     EditText edt1,edt2,edt3,edt4,edt5;
     Spinner spn1,spn2;
     TextView txt1,txt2;
     UniGradeDBClass db;
     String selectedcourse;
     String selectedsemester;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_addstudent);
         String doctorID = getIntent().getStringExtra("DoctorID");
-        btn=findViewById(R.id.btnaddstudent);
-        edt1=findViewById(R.id.edtstudentid);
-        edt2=findViewById(R.id.edtstudentname);
-        edt3=findViewById(R.id.edtattendance);
-        edt4=findViewById(R.id.edtmidterm);
-        edt5=findViewById(R.id.edtfinal);
-        spn1=findViewById(R.id.spinnercourse);
-        spn2=findViewById(R.id.spinnersemester);
-        txt1=findViewById(R.id.txttotalvalue);
-        txt2=findViewById(R.id.txtgradevalue);
-        db=new UniGradeDBClass(this);
-        String[] course = {"Select Course","Calculus 1","Calculus 2","Linear Algebra 1","Electric Circuits","Data Structures","Algorithms","Operating Systems","Database Systems"};
-        String[] semester ={"Select Semester","Fall 2025","Spring 2025","Summer 2025","Fall 2024","Spring 2024","Summer 2024"};
+        btn = findViewById(R.id.btnaddstudent);
+        btnBackToLogin = findViewById(R.id.btnbacktologin);
+        edt1 = findViewById(R.id.edtstudentid);
+        edt2 = findViewById(R.id.edtstudentname);
+        edt3 = findViewById(R.id.edtattendance);
+        edt4 = findViewById(R.id.edtmidterm);
+        edt5 = findViewById(R.id.edtfinal);
+        spn1 = findViewById(R.id.spinnercourse);
+        spn2 = findViewById(R.id.spinnersemester);
+        txt1 = findViewById(R.id.txttotalvalue);
+        txt2 = findViewById(R.id.txtgradevalue);
+        db = new UniGradeDBClass(this);
+        String[] course = {"Select Course", "Calculus 1", "Calculus 2", "Linear Algebra 1", "Electric Circuits", "Data Structures", "Algorithms", "Operating Systems", "Database Systems"};
+        String[] semester = {"Select Semester", "Fall 2025", "Spring 2025", "Summer 2025", "Fall 2024", "Spring 2024", "Summer 2024"};
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, course);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spn1.setAdapter(adapter1);
         spn1.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(android.widget.AdapterView<?> parent, android.view.View view, int position, long id) {
-                 selectedcourse = parent.getItemAtPosition(position).toString();
+                selectedcourse = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -96,12 +95,12 @@ public class addstudent extends AppCompatActivity {
                     return;
                 }
                 // Validate ranges
-                if (attend < 0 || attend > 100) {
-                    Toast.makeText(addstudent.this, "Attendance grade must be between 0 and 100", Toast.LENGTH_SHORT).show();
+                if (attend < 0 || attend > 10) {
+                    Toast.makeText(addstudent.this, "Attendance grade must be between 0 and 10", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (mid < 0 || mid > 40) {
-                    Toast.makeText(addstudent.this, "Midterm grade must be between 0 and 40", Toast.LENGTH_SHORT).show();
+                if (mid < 0 || mid > 30) {
+                    Toast.makeText(addstudent.this, "Midterm grade must be between 0 and 30", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (finalExam < 0 || finalExam > 60) {
@@ -109,23 +108,23 @@ public class addstudent extends AppCompatActivity {
                     return;
                 }
 
-                double total = attend * 0.10 + mid * 0.40 + finalExam * 0.50;
+                double total = attend + mid + finalExam;
                 String grade;
                 if (total >= 90) {
-                    grade="A";
+                    grade = "A";
                 } else if (total >= 80) {
-                    grade="B";
+                    grade = "B";
                 } else if (total >= 70) {
-                    grade="C";
+                    grade = "C";
                 } else if (total >= 60) {
-                    grade="D";
+                    grade = "D";
                 } else {
-                    grade="F";
+                    grade = "F";
                 }
                 txt1.setText(String.format(java.util.Locale.US, "%.2f", total));
                 txt2.setText(grade);
 
-                boolean inserted = db.addStudent (id, name, selectedcourse, selectedsemester, attend, mid, finalExam, total, grade,doctorID);
+                boolean inserted = db.addStudent(id, name, selectedcourse, selectedsemester, attend, mid, finalExam, total, grade, doctorID);
                 if (inserted) {
                     Toast.makeText(addstudent.this, "Student added", Toast.LENGTH_SHORT).show();
                     edt1.setText("");
@@ -135,15 +134,21 @@ public class addstudent extends AppCompatActivity {
                     edt5.setText("");
                     spn1.setSelection(0);
                     spn2.setSelection(0);
-                    txt1.setText("");
-                    txt2.setText("");
+
                 } else {
                     Toast.makeText(addstudent.this, "Failed to add student", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
 
-    }
-};
+        // Back to Login button
+        btnBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(addstudent.this, loginpage.class);
+                startActivity(i);
+                finish();
+            }
+        });
+    }}
+

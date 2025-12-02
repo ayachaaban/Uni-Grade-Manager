@@ -103,8 +103,17 @@
         android:id="@+id/btnregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="162dp"
-        android:layout_y="465dp"
+        android:layout_x="90dp"
+        android:layout_y="461dp"
         android:text="Register" />
 
+    <Button
+        android:id="@+id/btnbacktologin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="212dp"
+        android:layout_y="462dp"
+        android:text="Back to Login" />
+
 </AbsoluteLayout>
+

@@ -289,24 +289,68 @@ public class UniGradeDBClass extends SQLiteOpenHelper {
         db.close();
         return doctor;
     }
-    public ArrayList<HashMap<String, String>> getStudentsByDoctorName(String doctorName) {
+
+    // Get All Students with Doctor Info
+    public ArrayList<HashMap<String, String>> getAllStudents() {
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT s.* FROM " + TABLE_STUDENTS + " s " +
-                "INNER JOIN " + TABLE_DOCTORS + " d ON s.DoctorID = d.DoctorID " +
-                "WHERE d.DoctorName LIKE ?";
-        Cursor cursor = db.rawQuery(query, new String[]{"%" + doctorName + "%"});
-        while (cursor.moveToNext()) {
-            HashMap<String, String> map = new HashMap<>();
-            map.put("StudentID", cursor.getString(cursor.getColumnIndex("StudentID")));
-            map.put("StudentName", cursor.getString(cursor.getColumnIndex("StudentName")));
-            // Add other fields as needed
-            list.add(map);
+
+        String query = "SELECT s.StudentID, s.StudentName, s.Course, s.AttendanceGrade, " +
+                "s.MidtermGrade, s.FinalGrade, s.TotalMarks, d.DoctorName " +
+                "FROM " + TABLE_STUDENTS + " s " +
+                "LEFT JOIN " + TABLE_DOCTORS + " d ON s.DoctorID = d.DoctorID";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("StudentID", cursor.getString(0));
+                map.put("StudentName", cursor.getString(1));
+                map.put("Course", cursor.getString(2));
+                map.put("AttendanceGrade", cursor.getString(3));
+                map.put("MidtermGrade", cursor.getString(4));
+                map.put("FinalGrade", cursor.getString(5));
+                map.put("TotalMarks", cursor.getString(6));
+                map.put("DoctorName", cursor.getString(7) != null ? cursor.getString(7) : "No Doctor");
+                list.add(map);
+            } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
         return list;
     }
+
+    // Get students registered by a specific doctor
+    public ArrayList<HashMap<String, String>> getStudentsByDoctorId(String doctorId) {
+        ArrayList<HashMap<String, String>> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT s.StudentID, s.StudentName, s.Course, s.AttendanceGrade, " +
+                "s.MidtermGrade, s.FinalGrade, s.TotalMarks " +
+                "FROM " + TABLE_STUDENTS + " s " +
+                "WHERE s.DoctorID = ?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{doctorId});
+
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("StudentID", cursor.getString(0));
+                map.put("StudentName", cursor.getString(1));
+                map.put("Course", cursor.getString(2));
+                map.put("AttendanceGrade", cursor.getString(3));
+                map.put("MidtermGrade", cursor.getString(4));
+                map.put("FinalGrade", cursor.getString(5));
+                map.put("TotalMarks", cursor.getString(6));
+                list.add(map);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return list;
+    }
+
     public String getDoctorIdByUserId(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
         String doctorId = null;
@@ -323,6 +367,33 @@ public class UniGradeDBClass extends SQLiteOpenHelper {
             db.close();
         }
         return doctorId;
+    }
+    public boolean deleteStudent(String studentID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            int rows = db.delete(TABLE_STUDENTS, "StudentID = ?", new String[]{studentID});
+            return rows > 0;
+        } catch (Exception e) {
+            Log.e("DB_ERROR", "Error deleting student: " + e.getMessage());
+            return false;
+        } finally {
+            db.close();
+        }
+    }
+    public boolean updateStudent(String studentID, String courseName, double attendance,
+                                 double mid, double finalExam, double total, String grade) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Course", courseName);
+        values.put("AttendanceGrade", attendance);
+        values.put("MidtermGrade", mid);
+        values.put("FinalGrade", finalExam);
+        values.put("TotalMarks", total);
+        values.put("LetterGrade", grade);
+
+        int rows = db.update(TABLE_STUDENTS, values, "StudentID=?", new String[]{studentID});
+        db.close();
+        return rows > 0;
     }
 
     @Override

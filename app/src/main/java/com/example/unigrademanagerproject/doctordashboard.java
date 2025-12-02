@@ -30,7 +30,9 @@ public class doctordashboard extends TabActivity {
 
         TabSpec ts2 = tbh.newTabSpec("MyStudents");
         ts2.setIndicator("My Students");
-        ts2.setContent(new Intent(this, mystudents.class));
+        Intent myStudentsIntent = new Intent(this, mystudents.class);
+        myStudentsIntent.putExtra("DoctorID", doctorID); // forward doctor id
+        ts2.setContent(myStudentsIntent);
         tbh.addTab(ts2);
 
 

@@ -1,5 +1,6 @@
 package com.example.unigrademanagerproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class registerdoctor extends AppCompatActivity {
-    Button btn;
+    Button btn, btnBackToLogin;
     EditText edt1,edt2,edt3,edt4;
     Spinner spinnerDepartment;
     String selectedDepartment;
@@ -28,6 +29,7 @@ public class registerdoctor extends AppCompatActivity {
         setContentView(R.layout.activity_registerdoctor);
         db=new UniGradeDBClass(this);
         btn=findViewById(R.id.btnregister);
+        btnBackToLogin=findViewById(R.id.btnbacktologin);
         edt1=findViewById(R.id.edtname);
         edt2=findViewById(R.id.edtemail);
         edt3=findViewById(R.id.edtusername);
@@ -48,6 +50,17 @@ public class registerdoctor extends AppCompatActivity {
                 selectedDepartment = null;
             }
         });
+
+        // Back to Login button
+        btnBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(registerdoctor.this, loginpage.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

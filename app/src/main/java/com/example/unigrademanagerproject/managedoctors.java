@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class managedoctors extends AppCompatActivity {
-    Button btn;
+    Button btn, btnRefresh;
     ListView lst;
     SearchView searchView;
     UniGradeDBClass db;
@@ -33,16 +33,22 @@ public class managedoctors extends AppCompatActivity {
         db=new UniGradeDBClass(this);
         lst=findViewById(R.id.lstdoctors);
         btn=findViewById(R.id.btncancel);
+        btnRefresh=findViewById(R.id.btnrefresh);
         searchView=findViewById(R.id.searchdoctor);
         originalDoctorList = db.getAllDoctors();
+        displayDoctors(originalDoctorList);
 
-        SimpleAdapter adapter= new SimpleAdapter(
-                managedoctors.this,//matra7 li bade tbayen fi l simpleadapter
-                originalDoctorList, //data source(from the hashmap)
-                R.layout.activity_custom1, //custom layout li bade tbayen fi l listview
-                new String[] {"DoctorID", "Name","Department","Email","Username"} //keys from the hashmap
-                , new int[] {R.id.coldoctorid, R.id.colname,R.id.coldepartment, R.id.colemail,R.id.colusername});//name of text view in custom layout
-        lst.setAdapter(adapter);
+        // Refresh button - reload data from database
+        btnRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadDoctors();
+                searchView.setQuery("", false);
+                searchView.clearFocus();
+                android.widget.Toast.makeText(managedoctors.this, "Doctor list refreshed", android.widget.Toast.LENGTH_SHORT).show();
+            }
+        });
+
         lst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> myAdapter, View myView, int position, long mylng) {
 
@@ -84,40 +90,61 @@ public class managedoctors extends AppCompatActivity {
         });
     }
 
-private void filterDoctors(String query) {
-    // Step 1: Create empty list for filtered results
-    ArrayList<HashMap<String, String>> filteredList = new ArrayList<>();
-
-    // Step 2: If search is empty, show all doctors
-    if (query == null || query.trim().isEmpty()) {
-        filteredList.addAll(originalDoctorList);  // Copy all doctors
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload doctors from database when returning to this activity
+        loadDoctors();
     }
-    // Step 3: If user typed something, filter
-    else {
-        String lowerQuery = query.toLowerCase();  // Convert to lowercase for comparison
 
-        // Loop through ALL doctors
-        for (HashMap<String, String> doctor : originalDoctorList) {
-            // Get doctor's name and username
-            String name = doctor.get("Name").toLowerCase();
-            String username = doctor.get("Username").toLowerCase();
+    private void loadDoctors() {
+        originalDoctorList = db.getAllDoctors();
+        displayDoctors(originalDoctorList);
+    }
 
-            // If name OR username contains what user typed → add to filtered list
-            if (name.contains(lowerQuery) || username.contains(lowerQuery)) {
-                filteredList.add(doctor);
+    private void displayDoctors(ArrayList<HashMap<String, String>> doctorList) {
+        SimpleAdapter adapter = new SimpleAdapter(
+                managedoctors.this,
+                doctorList,
+                R.layout.activity_custom1,
+                new String[]{"DoctorID", "Name", "Department", "Email", "Username"},
+                new int[]{R.id.coldoctorid, R.id.colname, R.id.coldepartment, R.id.colemail, R.id.colusername});
+        lst.setAdapter(adapter);
+    }
+
+    private void filterDoctors(String query) {
+        // Step 1: Create empty list for filtered results
+        ArrayList<HashMap<String, String>> filteredList = new ArrayList<>();
+
+        // Step 2: If search is empty, show all doctors
+        if (query == null || query.trim().isEmpty()) {
+            filteredList.addAll(originalDoctorList);  // Copy all doctors
+        }
+        // Step 3: If user typed something, filter
+        else {
+            String lowerQuery = query.toLowerCase();  // Convert to lowercase for comparison
+
+            // Loop through ALL doctors
+            for (HashMap<String, String> doctor : originalDoctorList) {
+                // Get doctor's name and username
+                String name = doctor.get("Name").toLowerCase();
+                String username = doctor.get("Username").toLowerCase();
+
+                // If name OR username contains what user typed → add to filtered list
+                if (name.contains(lowerQuery) || username.contains(lowerQuery)) {
+                    filteredList.add(doctor);
+                }
             }
         }
+
+        // Step 4: Update ListView with filtered results
+        SimpleAdapter adapter = new SimpleAdapter(
+                managedoctors.this,
+                filteredList,  // ← Use filtered list instead of original
+                R.layout.activity_custom1,
+                new String[] {"DoctorID", "Name","Department","Email", "Username"},
+                new int[] {R.id.coldoctorid, R.id.colname, R.id.coldepartment,R.id.colemail, R.id.colusername}
+        );
+        lst.setAdapter(adapter);  // Show filtered results
     }
-
-    // Step 4: Update ListView with filtered results
-    SimpleAdapter adapter = new SimpleAdapter(
-            managedoctors.this,
-            filteredList,  // ← Use filtered list instead of original
-            R.layout.activity_custom1,
-            new String[] {"DoctorID", "Name","Department","Email", "Username"},
-            new int[] {R.id.coldoctorid, R.id.colname, R.id.coldepartment,R.id.colemail, R.id.colusername}
-    );
-    lst.setAdapter(adapter);  // Show filtered results
-}}
-
-
+}

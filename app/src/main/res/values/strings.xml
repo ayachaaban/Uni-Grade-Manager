@@ -1,3 +1,8 @@
+
 <resources>
     <string name="app_name">UniGrade Manager Project</string>
+    <string-array name="CmdMenu">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
 </resources>

@@ -158,6 +158,13 @@
         android:padding="5dip">
 
         <Button
+            android:id="@+id/btnrefresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Refresh"
+            android:layout_marginRight="10dp" />
+
+        <Button
             android:id="@+id/btncancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,4 +173,3 @@
     </LinearLayout>
 
 </TableLayout>
-
